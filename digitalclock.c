@@ -1,3 +1,5 @@
+//c program to create a digital clock
+
 #include<stdio.h>
 #include<windows.h>
 
@@ -7,7 +9,7 @@ int main()
     int d=1000;
     printf("Set Time: ");
     scanf("%d %d %d",&h,&m,&s);
-    if(h>12 || s>60 || m>60)
+    if(h>23 || s>60 || m>60)
     {
         printf("ERROR!");
         exit(0);
@@ -25,11 +27,17 @@ int main()
             h++;
             m=0;
         }
-        if(h>12)
+        if(h>23)
         {
-            h=1;
+            h=0;
         }
-        printf("Clock : %0.2d:%0.2d:%0.2d ",h,m,s);
+        if(h<12)
+        {
+         printf("Clock : %0.2d:%0.2d:%0.2d AM",h,m,s);   
+        }
+        if(h>=12){
+            printf("Clock : %0.2d:%0.2d:%0.2d PM",h,m,s);
+        }
         Sleep(d);
         system("cls");
     }
